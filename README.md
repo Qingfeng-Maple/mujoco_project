@@ -144,10 +144,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MUJOCO_PATH/bin
 2. 确认是否正确找到Option菜单
 3. 重启程序后再次尝试
 
-## 🤝 贡献指南
-
-欢迎提交问题和改进建议！
-
 ## 📚 参考资料
 
 1. [MuJoCo官方文档](https://mujoco.readthedocs.io/)
