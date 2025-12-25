@@ -24,6 +24,24 @@ target_link_libraries(
 )
 target_include_directories(threadpool PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
+add_executable(
+  mjpc
+  main.cc
+)
+find_package(OpenGL REQUIRED)
+find_package(GLUT REQUIRED)
+message(STATUS "OpenGL found: ${OPENGL_FOUND}")
+message(STATUS "GLUT found: ${GLUT_FOUND}")
+
+
+
+target_link_libraries(
+  mjpc
+  OpenGL::GL
+  GLUT::GLUT
+  libmjpc
+)
+
 add_library(
   libmjpc STATIC
   states/state.cc
@@ -37,6 +55,8 @@ add_library(
   tasks/tasks.cc
   tasks/tasks.h
   tasks/acrobot/acrobot.cc
+  tasks/simple_car/simple_car.h
+  tasks/simple_car/simple_car.cc
   tasks/acrobot/acrobot.h
   tasks/allegro/allegro.cc
   tasks/allegro/allegro.h
@@ -153,6 +173,8 @@ target_compile_options(libmjpc PUBLIC ${MJPC_COMPILE_OPTIONS})
 target_compile_definitions(libmjpc PRIVATE MJSIMULATE_STATIC)
 target_link_libraries(
   libmjpc
+  OpenGL::GL
+  GLUT::GLUT
   absl::any_invocable
   absl::check
   absl::flat_hash_map
@@ -173,10 +195,10 @@ target_include_directories(libmjpc
   ${CMAKE_CURRENT_BINARY_DIR}/..
 )
 
-add_executable(
-  mjpc
-  main.cc
-)
+
+
+
+
 target_link_libraries(
   mjpc
   absl::flags

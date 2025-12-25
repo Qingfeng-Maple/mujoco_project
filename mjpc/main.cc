@@ -16,15 +16,14 @@
 #include <string>
 #include <vector>
 #include <absl/flags/parse.h>
-
+#include <GL/freeglut.h>
 #include <absl/flags/flag.h>
 #include <absl/strings/match.h>
 #include <mujoco/mujoco.h>
 #include "mjpc/app.h"
 #include "mjpc/tasks/tasks.h"
 
-ABSL_FLAG(std::string, task, "Quadruped Flat",
-          "Which model to load on startup.");
+ABSL_FLAG(std::string, task, "Quadruped Flat", "Which model to load on startup.");
 
 // machinery for replacing command line error by a macOS dialog box
 // when running under Rosetta
@@ -47,7 +46,7 @@ int main(int argc, char** argv) {
   }
 #endif
   absl::ParseCommandLine(argc, argv);
-
+  glutInit(&argc, argv);
   std::string task_name = absl::GetFlag(FLAGS_task);
   auto tasks = mjpc::GetTasks();
   int task_id = -1;
@@ -65,7 +64,6 @@ int main(int argc, char** argv) {
     }
     mju_error("Invalid --task flag.");
   }
-
-  mjpc::StartApp(tasks, task_id);  // start with quadruped flat
+ mjpc::StartApp(tasks, task_id);
   return 0;
 }

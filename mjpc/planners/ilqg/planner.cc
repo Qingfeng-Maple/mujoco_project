@@ -32,7 +32,6 @@
 #include "mjpc/threadpool.h"
 #include "mjpc/trajectory.h"
 #include "mjpc/utilities.h"
-
 namespace mjpc {
 namespace mju = ::mujoco::util_mjpc;
 

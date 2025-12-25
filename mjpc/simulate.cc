@@ -34,6 +34,7 @@
 #include "mjpc/agent.h"
 #include "mjpc/utilities.h"
 
+
 // When launched via an App Bundle on macOS, the working directory is the path
 // to the App Bundle's resource directory. This causes files to be saved into
 // the bundle, which is not the desired behavior. Instead, we open a save dialog
@@ -1853,7 +1854,7 @@ void Simulate::Render() {
     // common to all tasks
     this->agent->ModifyScene(&this->scn);
   }
-
+  
   // render scene
   mjr_render(rect, &this->scn, &this->platform_ui->mjr_context());
 

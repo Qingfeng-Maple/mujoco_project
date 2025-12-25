@@ -418,6 +418,8 @@ MjpcApp::MjpcApp(std::vector<std::shared_ptr<mjpc::Task>> tasks, int task_id) {
   m = LoadModel(sim->agent.get(), *sim);
   if (m) d = mj_makeData(m);
 
+  m = LoadModel(sim->agent.get(), *sim);
+  if (m) d = mj_makeData(m);
   // set home keyframe
   int home_id = mj_name2id(m, mjOBJ_KEY, "home");
   if (home_id >= 0) mj_resetDataKeyframe(m, d, home_id);
