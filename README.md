@@ -43,36 +43,23 @@
 
 ```bash
 # 解压代码
-unzip cpp.zip -d cpp
+unzip mujoco_project.zip -d mujoco_project
 
 # 编译
-cd cpp
+cd mujoco_project
 mkdir build && cd build
 cmake ..
-make -j$(nproc)
+make -j4
+注：相关编译需要连接梯子，裸连的情况下容易编译失败或无法编译。同时要注意虚拟机的内存！
 ```
 
 ### 🎮 运行项目
 
-#### 基本启动
+#### 启动
 ```bash
 # 在build目录下执行
-./mjpc
+./bin/mjpc --task=SimpleCar
 ```
-
-#### 特定任务启动
-```bash
-# 运行人形机器人行走任务
-./mjpc --task humanoid
-
-# 运行机械臂控制任务
-./mjpc --task manipulator
-
-# 运行物体操作任务
-./mjpc --task manipulation
-```
-
-
 
 ## 📁 项目结构
 
